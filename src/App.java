@@ -58,27 +58,26 @@ public class App {
         for (BingoCard card : randomCards) {
             card.printCard();
         }
-        String win = "no";
-        while (win.equals("no")) {
-            int crossOffNum = call();
-            for (BingoCard card : randomCards) {
-                card.crossOff(crossOffNum);
-            }
-            for (BingoCard card : randomCards) {
-                card.printCard();
-            }
-            System.out.println("Do you have a BINGO?(yes/no)");
-            win = randomScanner.nextLine();
-            if (win.equals("yes")) {
-                for (BingoCard card : randomCards) {
-                    if (card.evaluate() == true) {
+
+        while (!randomCards.isEmpty()) {
+            BingoCard currentCard = randomCards.get(0);
+            String win = "no";
+            while (win.equals("no")) {
+                int crossOffNum = call();
+                currentCard.crossOff(crossOffNum);
+                currentCard.printCard();
+                System.out.println("Do you have a BINGO?(yes/no)");
+                win = randomScanner.nextLine();
+                if (win.equals("yes")) {
+                    if (currentCard.evaluate() == true) {
                         System.out.println("Congratulations! You won BINGO!");
                         System.exit(0);
                     } else {
-                        System.out.println("Sorry, you do not have BINGO. You are losing a card from your pile.");
+                        System.out.println("Sorry, you do not have BINGO. You are losing this card.");
                         randomCards.remove(0);
+                        currentCard = randomCards.get(0);
                         win = "no";
-                        if (randomCards.isEmpty() == true) {
+                        if (randomCards.isEmpty()) {
                             System.out.println("Sorry, you're all out of cards. You lost BINGO.");
                             System.exit(0);
                         }
