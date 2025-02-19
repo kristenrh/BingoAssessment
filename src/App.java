@@ -1,3 +1,12 @@
+/**
+ * App.java
+ * Author: Kristen Henningfeld
+ * Class: CS358-001
+ * Date: 2/18/2025
+ * Purpose: Creating a Bingo game using skills from previous classes. This program
+ * simulates a game of Bingo in either random or manual mode.
+ */
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +16,9 @@ import java.util.Random;
 public class App {
     public static List<Integer> calls = new ArrayList<>(); // List that stores previous calls
 
-    // Main method to start the Bingo game
+    /**
+     * Main method to start the Bingo game.
+     */
     public static void main(String[] args) {
         // Retrieving cards from file
         File file = new File("BingoCards.txt");
@@ -39,7 +50,9 @@ public class App {
         userScanner.close();
     }
 
-    // Method to play the game in random mode
+    /**
+     * Method to play the game in random mode.
+     */
     public static void randomGame() {
         List<BingoCard> randomCards = new ArrayList<>();
         Scanner randomScanner = new Scanner(System.in);
@@ -75,7 +88,9 @@ public class App {
                     } else {
                         System.out.println("Sorry, you do not have BINGO. You are losing this card.");
                         randomCards.remove(0);
-                        currentCard = randomCards.get(0);
+                        if (!randomCards.isEmpty()) {
+                            currentCard = randomCards.get(0);
+                        }
                         win = "no";
                         if (randomCards.isEmpty()) {
                             System.out.println("Sorry, you're all out of cards. You lost BINGO.");
@@ -88,7 +103,10 @@ public class App {
         randomScanner.close();
     }
 
-    // Method to play the game in manual mode
+    /**
+     * Method to play the game in manual mode.
+     * @param card The BingoCard object to play with.
+     */
     public static void manualGame(BingoCard card) {
         String win = "no";
         Scanner manualScanner = new Scanner(System.in);
@@ -113,7 +131,10 @@ public class App {
         manualScanner.close();
     }
 
-    // Method to call a random number for the Bingo game
+    /**
+     * Method to call a random number for the Bingo game.
+     * @return The called number.
+     */
     public static int call() {
         Random num = new Random();
         int randomNumber = num.nextInt(74) + 1; // generates a number between 1 and 75

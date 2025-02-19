@@ -1,3 +1,12 @@
+/**
+ * BingoCard.java
+ * Author: Kristen Henningfeld
+ * Class: CS358-001
+ * Date: 2/18/2025
+ * Purpose: Creating a Bingo game using skills from previous classes. This class
+ * creates and stores Bingo cards for use in the game.
+ */
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +17,22 @@ public class BingoCard {
     private int[][] numbers;
     public static List<BingoCard> bingoCards;
 
-    // Constructor to initialize BingoCard with name and numbers
+    /**
+     * Constructor to initialize BingoCard with name and numbers.
+     * @param n The name of the Bingo card.
+     * @param num The 2D array of numbers on the Bingo card.
+     */
     public BingoCard(String n, int[][] num) {
         this.name = n;
         this.numbers = num;
     }
 
-    // Static method to read Bingo cards from a file
+    /**
+     * Static method to read Bingo cards from a file.
+     * @param file The file containing Bingo card data.
+     * @return A list of BingoCard objects.
+     * @throws Exception If an error occurs while reading the file.
+     */
     public static List<BingoCard> readFromFile(File file) throws Exception {
         Scanner scanner = new Scanner(file);
         List<BingoCard> cards = new ArrayList<>();
@@ -41,17 +59,26 @@ public class BingoCard {
         return cards;
     }
 
-    // Getter for name
+    /**
+     * Getter for the name of the Bingo card.
+     * @return The name of the Bingo card.
+     */
     public String getName() {
         return name;
     }
 
-    // Getter for numbers array
+    /**
+     * Getter for the numbers on the Bingo card.
+     * @return The 2D array of numbers on the Bingo card.
+     */
     public int[][] getNumbers() {
         return numbers;
     }
 
-    // Method to cross off a number on the Bingo card
+    /**
+     * Method to cross off a number on the Bingo card.
+     * @param num The number to be crossed off.
+     */
     public void crossOff(int num) {
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {
@@ -62,7 +89,10 @@ public class BingoCard {
         }
     }
 
-    // Method to evaluate if the Bingo card has a winning combination
+    /**
+     * Method to evaluate if the Bingo card has a winning combination.
+     * @return True if the card has a winning combination, false otherwise.
+     */
     public boolean evaluate() {
         boolean overall = false;
         // Check rows
@@ -101,7 +131,9 @@ public class BingoCard {
         return diagonalBingo1 || diagonalBingo2;
     }
 
-    // Method to print the Bingo card
+    /**
+     * Method to print the Bingo card.
+     */
     public void printCard() {
         System.out.println("---------------------------------------------------------------------------------");
         System.out.println("BingoCard Name: " + name);
