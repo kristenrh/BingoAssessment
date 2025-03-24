@@ -230,5 +230,23 @@ public class PatternTest {
         };
         card = new BingoCard("Test Card", numbers);
         assertFalse(pattern.matches(card));
+
+        //P16: Custom Pattern of the top row, bottom row, left column and right column (a square)
+        customPattern = List.of(
+            new int[]{0, 0}, new int[]{0, 1}, new int[]{0, 2}, new int[]{0, 3}, new int[]{0, 4},
+            new int[]{4, 0}, new int[]{4, 1}, new int[]{4, 2}, new int[]{4, 3}, new int[]{4, 4},
+            new int[]{1, 0}, new int[]{2, 0}, new int[]{3, 0},
+            new int[]{1, 4}, new int[]{2, 4}, new int[]{3, 4}
+        );
+        pattern = new Pattern(customPattern);
+        numbers = new int[][]{
+            {-1, -1, -1, -1, -1},
+            {-1, 1, 2, 3, -1},
+            {-1, 4, 5, 6, -1},
+            {-1, 7, 8, 9, -1},
+            {-1, -1, -1, -1, -1}
+        };
+        card = new BingoCard("Test Card", numbers);
+        assertTrue(pattern.matches(card));
     }
 }
