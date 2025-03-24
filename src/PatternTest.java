@@ -131,5 +131,20 @@ public class PatternTest {
         card = new BingoCard("Test Card", numbers);
         assertFalse(pattern.checkColumn(card));
 
+        //P9: 2nd column fully marked except 2nd row
+        for (int i = 0; i < 5; i++) {
+            columnPattern[i][0] = false;
+            columnPattern[i][1] = true;
+        }
+        pattern = new Pattern(columnPattern);
+        numbers = new int[][]{
+            {1, -1, 3, 4, 5},
+            {6, 7, 8, 9, 10},
+            {11, -1, 13, 14, 15},
+            {16, -1, 18, 19, 20},
+            {21, -1, 23, 24, 25}
+        };
+        card = new BingoCard("Test Card", numbers);
+        assertFalse(pattern.checkColumn(card));
     }
 }
