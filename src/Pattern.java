@@ -100,4 +100,24 @@ public class Pattern {
         }
         return false;
     }
+
+    /**
+     * Method to check if a card has a fully marked diagonal.
+     * @param card The BingoCard to check.
+     * @return True if the card has a fully marked diagonal, false otherwise.
+     */
+    public static boolean checkDiagonal(BingoCard card) {
+        int[][] numbers = card.getNumbers();
+        boolean diagonalBingo1 = true;
+        boolean diagonalBingo2 = true;
+        for (int i = 0; i < 5; i++) {
+            if (numbers[i][i] != -1) {
+                diagonalBingo1 = false;
+            }
+            if (numbers[i][4 - i] != -1) {
+                diagonalBingo2 = false;
+            }
+        }
+        return diagonalBingo1 || diagonalBingo2;
+    }
 }
