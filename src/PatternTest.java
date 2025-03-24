@@ -165,5 +165,16 @@ public class PatternTest {
         };
         BingoCard card = new BingoCard("Test Card", numbers);
         assertTrue(pattern.checkDiagonal(card));
+
+        //P11: Top-left to Bottom-right fully marked
+        numbers = new int[][]{
+            {-1, 1, 2, 3, 4},
+            {5, -1, 6, 7, 8},
+            {9, 10, -1, 11, 12},
+            {13, 14, 15, -1, 16},
+            {17, 18, 19, 20, -1}
+        };
+        card = new BingoCard("Test Card", numbers);
+        assertTrue(pattern.checkDiagonal(card));
     }
 }
