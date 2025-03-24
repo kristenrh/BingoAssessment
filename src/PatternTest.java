@@ -259,5 +259,16 @@ public class PatternTest {
         };
         card = new BingoCard("Test Card", numbers);
         assertFalse(pattern.matches(card));
+
+        //P18: Entire card fully marked except the top left corner
+        numbers = new int[][]{
+            {1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1}
+        };
+        card = new BingoCard("Test Card", numbers);
+        assertFalse(pattern.matches(card));
     }
 }
