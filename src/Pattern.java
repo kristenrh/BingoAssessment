@@ -57,4 +57,25 @@ public class Pattern {
         return false;
     }
 
+    /**
+     * Method to check if a card has a fully marked row.
+     * @param card The BingoCard to check.
+     * @return True if the card has a fully marked row, false otherwise.
+     */
+    public static boolean checkRow(BingoCard card) {
+        int[][] numbers = card.getNumbers();
+        for (int i = 0; i < 5; i++) {
+            boolean rowBingo = true;
+            for (int j = 0; j < 5; j++) {
+                if (numbers[i][j] != -1) {
+                    rowBingo = false;
+                    break;
+                }
+            }
+            if (rowBingo) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
