@@ -98,5 +98,21 @@ public class PatternTest {
         };
         card = new BingoCard("Test Card", numbers);
         assertTrue(pattern.checkColumn(card));
+
+        //P7: Last column fully marked
+        for (int i = 0; i < 5; i++) {
+            columnPattern[i][3] = false;
+            columnPattern[i][4] = true;
+        }
+        pattern = new Pattern(columnPattern);
+        numbers = new int[][]{
+            {1, 2, 3, 4, -1},
+            {6, 7, 8, 9, -1},
+            {11, 12, 13, 14, -1},
+            {16, 17, 18, 19, -1},
+            {21, 22, 23, 24, -1}
+        };
+        card = new BingoCard("Test Card", numbers);
+        assertTrue(pattern.checkColumn(card));
     }
 }
