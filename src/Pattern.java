@@ -78,4 +78,26 @@ public class Pattern {
         }
         return false;
     }
+
+    /**
+     * Method to check if a card has a fully marked column.
+     * @param card The BingoCard to check.
+     * @return True if the card has a fully marked column, false otherwise.
+     */
+    public static boolean checkColumn(BingoCard card) {
+        int[][] numbers = card.getNumbers();
+        for (int j = 0; j < 5; j++) {
+            boolean columnBingo = true;
+            for (int i = 0; i < 5; i++) {
+                if (numbers[i][j] != -1) {
+                    columnBingo = false;
+                    break;
+                }
+            }
+            if (columnBingo) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
