@@ -1,6 +1,8 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 public class PatternTest {
 
     @Test
@@ -187,5 +189,24 @@ public class PatternTest {
         };
         card = new BingoCard("Test Card", numbers);
         assertFalse(pattern.checkDiagonal(card));
+    }
+
+    @Test
+    public void testCustomPattern() {
+        //P13: Custom Pattern of Top row & Middle Column
+        List<int[]> customPattern = List.of(
+            new int[]{0, 0}, new int[]{0, 1}, new int[]{0, 2}, new int[]{0, 3}, new int[]{0, 4},
+            new int[]{1, 2}, new int[]{2, 2}, new int[]{3, 2}, new int[]{4, 2}
+        ); //list.of holds coordinates
+        Pattern pattern = new Pattern(customPattern);
+        int[][] numbers = {
+            {-1, -1, -1, -1, -1},
+            {1, 2, -1, 4, 5},
+            {6, 7, -1, 9, 10},
+            {11, 12, -1, 14, 15},
+            {16, 17, -1, 19, 20}
+        };
+        BingoCard card = new BingoCard("Test Card", numbers);
+        assertTrue(pattern.matches(card));
     }
 }
