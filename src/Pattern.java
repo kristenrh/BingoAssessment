@@ -12,4 +12,19 @@ public class Pattern {
         this.pattern = pattern;
     }
 
+    /**
+     * Constructor to initialize the custom pattern.
+     * @param customPattern The list of coordinates within the custom pattern.
+     */
+    public Pattern(List<int[]> customPattern) {
+        this.customPattern = customPattern;
+    }
+
+    /**
+     * Getter for the pattern.
+     * @return The 2D array representing the pattern.
+     */
+    public boolean[][] getPattern() {
+        return pattern;
+    }
 }
