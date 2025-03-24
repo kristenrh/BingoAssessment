@@ -35,7 +35,7 @@ public class Pattern {
      */
     public boolean matches(BingoCard card) {
         int[][] numbers = card.getNumbers();
-        if (pattern != null) { //check for pattern
+        if (pattern != null) { // check for pattern
             for (int i = 0; i < 5; i++) {
                 for (int j = 0; j < 5; j++) {
                     if (pattern[i][j] && numbers[i][j] != -1) {
@@ -44,7 +44,7 @@ public class Pattern {
                 }
             }
             return true;
-        } else if (customPattern != null) { //check for custom pattern
+        } else if (customPattern != null) { // check for custom pattern
             for (int[] coordinate : customPattern) {
                 int x = coordinate[0];
                 int y = coordinate[1];
@@ -62,7 +62,7 @@ public class Pattern {
      * @param card The BingoCard to check.
      * @return True if the card has a fully marked row, false otherwise.
      */
-    public static boolean checkRow(BingoCard card) {
+    public boolean checkRow(BingoCard card) {
         int[][] numbers = card.getNumbers();
         for (int i = 0; i < 5; i++) {
             boolean rowBingo = true;
