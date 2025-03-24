@@ -147,4 +147,23 @@ public class PatternTest {
         card = new BingoCard("Test Card", numbers);
         assertFalse(pattern.checkColumn(card));
     }
+
+    @Test
+    public void testDiagonalPattern() {
+        //P10: Top-right to Bottom-left fully marked
+        boolean[][] diagonalPattern = new boolean[5][5];
+        for (int i = 0; i < 5; i++) {
+            diagonalPattern[i][i] = true;
+        }
+        Pattern pattern = new Pattern(diagonalPattern);
+        int[][] numbers = {
+            {-1, 1, 2, 3, 4},
+            {5, -1, 6, 7, 8},
+            {9, 10, -1, 11, 12},
+            {13, 14, 15, -1, 16},
+            {17, 18, 19, 20, -1}
+        };
+        BingoCard card = new BingoCard("Test Card", numbers);
+        assertTrue(pattern.checkDiagonal(card));
+    }
 }
