@@ -22,7 +22,7 @@ public class PatternTest {
         BingoCard card = new BingoCard("Test Card", numbers);
         assertTrue(pattern.checkRow(card));
 
-        // P2: 3rd row fully marked
+        //P2: 3rd row fully marked
         rowPattern = new boolean[5][5];
         for (int i = 0; i < 5; i++) {
             rowPattern[2][i] = true;
@@ -38,7 +38,7 @@ public class PatternTest {
         card = new BingoCard("Test Card", numbers);
         assertTrue(pattern.checkRow(card));
 
-        // P3: Last row fully marked
+        //P3: Last row fully marked
         rowPattern = new boolean[5][5];
         for (int i = 0; i < 5; i++) {
             rowPattern[4][i] = true;
@@ -53,5 +53,16 @@ public class PatternTest {
         };
         card = new BingoCard("Test Card", numbers);
         assertTrue(pattern.checkRow(card));
+
+        //P4: 1st row fully marked except last column
+        numbers = new int[][]{
+            {-1, -1, -1, -1, 5},
+            {1, 2, 3, 4, 5},
+            {6, 7, 8, 9, 10},
+            {11, 12, 13, 14, 15},
+            {16, 17, 18, 19, 20}
+        };
+        card = new BingoCard("Test Card", numbers);
+        assertFalse(pattern.checkRow(card));
     }
 }
