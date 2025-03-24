@@ -11,7 +11,6 @@ public class PatternTest {
             rowPattern[0][i] = true;
         }
         Pattern pattern = new Pattern(rowPattern);
-
         int[][] numbers = {
             {-1, -1, -1, -1, -1},
             {1, 2, 3, 4, 5},
@@ -64,5 +63,24 @@ public class PatternTest {
         };
         card = new BingoCard("Test Card", numbers);
         assertFalse(pattern.checkRow(card));
+    }
+
+    @Test
+    public void testColumnPattern() {
+        // P5: 1st column fully marked
+        boolean[][] columnPattern = new boolean[5][5];
+        for (int i = 0; i < 5; i++) {
+            columnPattern[i][0] = true;
+        }
+        Pattern pattern = new Pattern(columnPattern);
+        int[][] numbers = {
+            {-1, 1, 2, 3, 4},
+            {-1, 5, 6, 7, 8},
+            {-1, 9, 10, 11, 12},
+            {-1, 13, 14, 15, 16},
+            {-1, 17, 18, 19, 20}
+        };
+        BingoCard card = new BingoCard("Test Card", numbers);
+        assertTrue(pattern.checkColumn(card));
     }
 }

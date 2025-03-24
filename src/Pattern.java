@@ -84,7 +84,7 @@ public class Pattern {
      * @param card The BingoCard to check.
      * @return True if the card has a fully marked column, false otherwise.
      */
-    public static boolean checkColumn(BingoCard card) {
+    public boolean checkColumn(BingoCard card) {
         int[][] numbers = card.getNumbers();
         for (int j = 0; j < 5; j++) {
             boolean columnBingo = true;
@@ -106,7 +106,7 @@ public class Pattern {
      * @param card The BingoCard to check.
      * @return True if the card has a fully marked diagonal, false otherwise.
      */
-    public static boolean checkDiagonal(BingoCard card) {
+    public boolean checkDiagonal(BingoCard card) {
         int[][] numbers = card.getNumbers();
         boolean diagonalBingo1 = true;
         boolean diagonalBingo2 = true;
