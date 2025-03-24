@@ -176,5 +176,16 @@ public class PatternTest {
         };
         card = new BingoCard("Test Card", numbers);
         assertTrue(pattern.checkDiagonal(card));
+
+        //P12: 2nd row fully marked
+        numbers = new int[][]{
+            {1, 2, 3, 4, 5},
+            {-1, -1, -1, -1, -1},
+            {6, 7, 8, 9, 10},
+            {11, 12, 13, 14, 15},
+            {16, 17, 18, 19, 20}
+        };
+        card = new BingoCard("Test Card", numbers);
+        assertFalse(pattern.checkDiagonal(card));
     }
 }
