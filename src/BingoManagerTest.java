@@ -37,5 +37,16 @@ public class BingoManagerTest {
         };
         BingoCard card2 = new BingoCard("Test Card 2", numbers2);
         assertEquals(3, bingoManager.countBingos(card2));
+
+        //BM3: 1st, 3rd, and last row fully marked, and last column fully marked
+        int[][] numbers3 = {
+            {-1, -1, -1, -1, -1},
+            {1, 2, 3, 4, -1},
+            {-1, -1, -1, -1, -1},
+            {11, 12, 13, 14, -1},
+            {-1, -1, -1, -1, -1}
+        };
+        BingoCard card3 = new BingoCard("Test Card 3", numbers3);
+        assertEquals(3, bingoManager.countBingos(card3));
     }
 }
