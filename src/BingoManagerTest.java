@@ -49,4 +49,36 @@ public class BingoManagerTest {
         BingoCard card3 = new BingoCard("Test Card 3", numbers3);
         assertEquals(3, bingoManager.countBingos(card3));
     }
+
+    @Test
+    public void testRowColumnPatterns() {
+        BingoManager bingoManager = new BingoManager();
+        //Add row patterns
+        for (int i = 0; i < 5; i++) {
+            boolean[][] rowPattern = new boolean[5][5];
+            for (int j = 0; j < 5; j++) {
+                rowPattern[i][j] = true;
+            }
+            bingoManager.addPattern(new Pattern(rowPattern));
+        }
+        //Add column patterns
+        for (int j = 0; j < 5; j++) {
+            boolean[][] columnPattern = new boolean[5][5];
+            for (int i = 0; i < 5; i++) {
+                columnPattern[i][j] = true;
+            }
+            bingoManager.addPattern(new Pattern(columnPattern));
+        }
+
+        //BM4: 1st, 3rd, and last row fully marked, and last column fully marked
+        int[][] numbers = {
+            {-1, -1, -1, -1, -1},
+            {1, 2, 3, 4, -1},
+            {-1, -1, -1, -1, -1},
+            {11, 12, 13, 14, -1},
+            {-1, -1, -1, -1, -1}
+        };
+        BingoCard card = new BingoCard("Test Card 1", numbers);
+        assertEquals(4, bingoManager.countBingos(card));
+    }
 }
