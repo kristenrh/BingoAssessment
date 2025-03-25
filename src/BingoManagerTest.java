@@ -176,4 +176,57 @@ public class BingoManagerTest {
         BingoCard card = new BingoCard("Test Card", numbers);
         assertEquals(14, bingoManager.countBingos(card));
     }
+    @Test
+    public void testRowColumnDiagonalCustomPatterns2() {
+        BingoManager bingoManager = new BingoManager();
+        //Add row patterns
+        for (int i = 0; i < 5; i++) {
+            boolean[][] rowPattern = new boolean[5][5];
+            for (int j = 0; j < 5; j++) {
+                rowPattern[i][j] = true;
+            }
+            bingoManager.addPattern(new Pattern(rowPattern));
+        }
+        //Add column patterns
+        for (int j = 0; j < 5; j++) {
+            boolean[][] columnPattern = new boolean[5][5];
+            for (int i = 0; i < 5; i++) {
+                columnPattern[i][j] = true;
+            }
+            bingoManager.addPattern(new Pattern(columnPattern));
+        }
+        //Add diagonal patterns
+        boolean[][] diagonalPattern1 = new boolean[5][5];
+        boolean[][] diagonalPattern2 = new boolean[5][5];
+        for (int i = 0; i < 5; i++) {
+            diagonalPattern1[i][i] = true;
+            diagonalPattern2[i][4 - i] = true;
+        }
+        bingoManager.addPattern(new Pattern(diagonalPattern1));
+        bingoManager.addPattern(new Pattern(diagonalPattern2));
+        //Add custom patterns
+        List<int[]> customPattern1 = Arrays.asList(
+            new int[]{0, 0}, new int[]{0, 1}, new int[]{0, 2}, new int[]{0, 3}, new int[]{0, 4},
+            new int[]{1, 2}, new int[]{2, 2}, new int[]{3, 2}, new int[]{4, 2}
+        );
+        bingoManager.addPattern(new Pattern(customPattern1));
+        List<int[]> customPattern2 = Arrays.asList(
+            new int[]{0, 0}, new int[]{0, 1}, new int[]{0, 2}, new int[]{0, 3}, new int[]{0, 4},
+            new int[]{4, 0}, new int[]{4, 1}, new int[]{4, 2}, new int[]{4, 3}, new int[]{4, 4},
+            new int[]{1, 0}, new int[]{2, 0}, new int[]{3, 0},
+            new int[]{1, 4}, new int[]{2, 4}, new int[]{3, 4}
+        );
+        bingoManager.addPattern(new Pattern(customPattern2));
+
+        //BM7: Full card marked except for top right corner
+        int[][] numbers = {
+            {-1, -1, -1, -1, 5},
+            {-1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1},
+            {-1, -1, -1, -1, -1}
+        };
+        BingoCard card = new BingoCard("Test Card", numbers);
+        assertEquals(9, bingoManager.countBingos(card));
+    }
 }
